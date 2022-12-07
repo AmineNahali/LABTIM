@@ -1,0 +1,89 @@
+.idModalPatients{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.idModalInfo{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.idModalPatientsContent{
+	background-color: #f4f4f4;
+	margin: 5% auto;
+	padding: 20px;
+	width: 70%;
+	height:600px;
+	box-shadow: box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.idModalInfoContent{
+	background-color: #f4f4f4;
+	margin: 5% auto;
+	padding: 20px;
+	width: 40%;
+	height:600px;
+	box-shadow: box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.closeModalInfo{
+	color: black;
+	float: right;
+	font-size: 30px;
+}
+.closeModalPatients{
+	color: black;
+	float: right;
+	font-size: 30px;
+}
+.closeModalPatients:hover{
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+.closeModalPatients:focus{
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+.closeModalInfo:hover{
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+.closeModalInfo:focus{
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+#folders{
+	visibility: hidden;
+}
+.foldersection:hover{
+	background-color: #027196;
+	cursor: pointer;
+}
+.idPatient{
+	width: 100%;
+	height: fit-content;
+	border:1px solid white;
+
+}
+.idPatient:hover{
+	background-color: #027196;
+	cursor: pointer;
+}
+.listeSection{
+    width:100%;
+    height:400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

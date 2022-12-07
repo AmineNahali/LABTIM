@@ -1,0 +1,481 @@
+{% extends 'admin.html' %}
+
+{% block header %}
+<title>Utilisateurs</title>
+<style>
+body{
+    overflow-y: hidden;
+}
+.usersContainer {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url({{url_for('static',filename='searchicon.png')}});
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 40%;
+  height:auto;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-left: 20%;
+  position:absolute;
+  left:auto;
+  top:10%;
+}
+
+#myUL {
+	
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+#myUL li a {
+  /*border: 1px solid #ddd;*/
+  margin-top: 2px; /* Prevent double borders */
+  background-color: #f6f6f6;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+  display: block
+}
+
+#myUL li a:hover:not(.header) {
+  background-color: #eee;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #6998AB;
+}
+button {
+  background-color: #0b88b1;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+.cancelbtn, .deletebtn {
+  float: left;
+  width: 50%;
+}
+.cancelbtn {
+  background-color: #ccc;
+  color: black;
+}
+.deletebtn {
+  background-color: #f44336;
+}
+.containerSuppression {
+  padding: 16px;
+  text-align: center;
+}
+.modalSuppression {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 50px;
+}
+.modalSuppression-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  max-width: 50%; /* Could be more or less, depending on screen size */
+}
+.closeSuppression {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+.closeSuppression:hover,
+.closeSuppression:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+.clearfixSuppression::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media screen and (max-width: 300px) {
+  .cancelbtn, .deletebtn {
+     width: 100%;
+  }
+}
+#corsair{
+    z-index: 0;
+    visibility: visible;
+    position: sticky;
+    top: 74px;
+    left: 10px;
+    width: 13%;
+    height: 100px;
+}
+</style>
+<!--------------------------------------------------------------------------------------->
+{% endblock %}
+
+{% block content %}
+<div id="corsair">
+    <!--<input type="radio" name="app" id="appX">
+    <label for="appX">Appx</label><br>
+    <input type="radio" name="app" id="appX">
+    <label for="appX">Appx</label><br>-->
+</div>
+
+<!-- Patient Modal Begin -->
+
+<div id="idModalPatients" class="idModalPatients">
+    <div id="idModalPatientsContent" class="idModalPatientsContent">
+        <span id="closeModalPatients" class="closeModalPatients">&times;</span><br>
+        <h2>Liste des patients:</h2><br>
+        <table style="min-height: 70%;width: 100%;">
+            <tr>
+                <th style="background: #cfdfe9;width: 50%;">
+                    <div class="listeSection">
+                        <div id="liste_patients" onclick="hideandseek();focusPatient = 'idP';">
+                            <div class="idPatient">
+                                <p id="idP" style="text-align:left;padding-left: 5px;">ID: 16582558258</p>
+                                <p id="dateP" style="text-align:left;padding-left: 5px;">Ajouté le 03/03/2022</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </th>
+                <th style="background: #cfdfe9;">
+                    <div id="folders">
+                        <table style="width: 100%;height: 100%;">
+                            <tr style="width: 100%;">
+                                <td style="width:50%;height:50%;">
+                                    <!-- icone ici -->
+                                    <div class="foldersection" id="folder_original">
+                                        <svg style="width: 100px;height: 100px;" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><g><g><g><polygon points="410.3,447.2 0,447.2 79.7,157.9 490,157.9 "/><polygon points="62.2,134.9 410.3,134.9 410.3,90.6 205.3,90.6 184.7,42.8 0,42.8 0,360.9 "/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                        <p style="text-align: center;">Images originales</p>
+                                    </div>
+                                </td>
+                                <td style="width:50%;height:50%;">
+                                    <!-- icone ici -->
+                                    <div class="foldersection" id="folder_segmented_covid">
+                                        <svg style="width: 100px;height: 100px;" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><g><g><g><polygon points="410.3,447.2 0,447.2 79.7,157.9 490,157.9 "/><polygon points="62.2,134.9 410.3,134.9 410.3,90.6 205.3,90.6 184.7,42.8 0,42.8 0,360.9 "/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                        <p style="text-align: center;">Images segmentés (organe)</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="width: 100%;">
+                                <td style="width:50%;height:50%;">
+                                    <!-- icone ici -->
+                                    <div class="foldersection" id="folder_segmented_lungs">
+                                        <svg style="width: 100px;height: 100px;" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><g><g><g><polygon points="410.3,447.2 0,447.2 79.7,157.9 490,157.9 "/><polygon points="62.2,134.9 410.3,134.9 410.3,90.6 205.3,90.6 184.7,42.8 0,42.8 0,360.9 "/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                        <p style="text-align: center;">Images segmentés (infection)</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <!-- icone ici -->
+                                    <div class="foldersection" id="folder_3dOutput">
+                                        <svg style="width: 100px;height: 100px;" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 490 490" style="enable-background:new 0 0 490 490;" xml:space="preserve"><g><g><g><polygon points="410.3,447.2 0,447.2 79.7,157.9 490,157.9 "/><polygon points="62.2,134.9 410.3,134.9 410.3,90.6 205.3,90.6 184.7,42.8 0,42.8 0,360.9 "/></g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+                                        <p style="text-align: center;">models 3D</p>    
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Patient Modal End-->
+
+<!-- Info Modal Begin -->
+<div class="idModalInfo" id="idModalInfo">
+    <div style="height:fit-content !important;" class="idModalInfoContent" id="idModalInfoContent">
+        <span class="closeModalInfo" id="closeModalInfo">&times;</span><br>
+        <h1>Détails :</h1>
+        <div id="userDetails">
+            <div id='usr_nom'>Nom: n/a</div><br>
+            <div id='usr_prenom'>Prénom: /a</div><br>
+            <div id='usr_app'>Application: n/a</div><br>
+            <div id='usr_mail'>Mail: n/a</div><br>
+            <div id='usr_phone'>Téléphone: n/a</div><br>
+            <div id='usr_cin'>CIN: n/a</div><br>
+            <div id='usr_spec'>Spécialité: n/a</div><br>
+            <div id='usr_etab'>Etablissement: n/a</div><br>
+            <div id='usr_insc'>Inscrit le: n/a</div>
+        </div><br>
+        <div id="btnShowRelatedPatients">-</div>
+    </div>
+</div>
+<!-- Info Modal End -->
+
+<!-- Delete Modal Begin -->
+<div id="idModalSuppression" class="modalSuppression">
+  <span onclick="document.getElementById('idModalSuppression').style.display='none'" class="closeSuppression" title="Close Modal">×</span>
+  <form class="modalSuppression-content" action="/action_page.php">
+    <div class="containerSuppression">
+      <h1>Supprimer Compte</h1>
+      <p>supprimer cet utilisateur ?</p>
+    
+      <div class="clearfixSuppression">
+        <button type="button" onclick="resetBlacklisted();document.getElementById('idModalSuppression').style.display='none'" class="cancelbtn">Non</button>
+        <button type="button" onclick="confirmDel();" class="deletebtn">Oui</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Delete Modal End -->
+
+
+
+<div style="margin: -74px auto;width: 70%;">
+<div class="usersContainer">
+    <div id="msgUsersid"></div>
+<div style="visibility: visible;">
+    <table style="width: 100%;">
+        <tr>
+            <th style="width: 20%;"><div style="float: left;margin-left: 10px;color: green;">CIN</div></th>
+            <th style="width: 20%;"><div style="float: left;margin-left: 10px;color: green;">APP</div></th>
+            <th style="width: 20%;"><div style="float: left;color: green;">Nom&Prénom</div></th>
+            <th style="width: 20%;"><div style="float: left;color: green;">MAIL</div></th>
+            <th style="width: 50px;"><div style="float: right;color: green;margin-right: 20px;">OPTIONS</div></th>
+        </tr>
+    </table><br>
+</div>
+<div style="height:400px;overflow-y: scroll;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+<ul id="myUL">
+    
+</ul>
+</div>
+<script>
+blackListed = "";
+blackListedApp = "";
+focusPatient = "";
+/********************************************************************/
+document.getElementById('searchInputPlace').innerHTML = `<input type="text" id="myInput" onkeyup="searchit()" placeholder="Chercher.." title="taper quelque chose">`;
+
+fetch("/admin/listUsers",{method:'POST'})
+.then(res=>res.json())
+.then((data)=>{
+    if(data.msg == "empty"){document.getElementById("msgUsersid").innerHTML = `<h3 style="text-align:center;">La liste des utilisateurs est vide</h3>`}
+    if(data.msg == "success"){
+        mainList = document.getElementById("myUL");
+        i=0;
+        arrx= data.ls.split('///');
+        arrx.pop();
+        arrx.forEach((element)=>{
+            nomprenom=element.split('&&&')[0];
+            mail=element.split('&&&')[1];
+            sonappli=element.split('&&&')[2];
+            soncin=element.split('&&&')[3];
+            template=`
+         <li onmouseout="document.getElementById('rdel${i}').style.display='none';document.getElementById('rinf${i}').style.display='none';" onmouseover="document.getElementById('rdel${i}').style.display='block';document.getElementById('rinf${i}').style.display='block';">
+            <a>
+                <table style="width: 100%;">
+                    <tr>
+                        <th style="width:20%">
+                            <div>${soncin}</div>
+                        </th>
+                        <th style="width:20%">
+                            <div id="sonapp${i}">${sonappli}</div>
+                        </th>
+                        <th style="width:20%">
+                            <div>${nomprenom}</div>
+                        </th>
+                        <th style="width:20%">
+                            <div>${mail}</div>
+                        </th>
+                        <th style="width:fit-content;">
+                            <div id="rinf${i}" style="display:none;float:right;width:23px" onclick="infoUsr('${mail}')">
+                                <svg width="22px" height="22px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><title/><path d="M24,21A10,10,0,1,1,34,11,10,10,0,0,1,24,21ZM24,5a6,6,0,1,0,6,6A6,6,0,0,0,24,5Z"/><path d="M42,47H6a2,2,0,0,1-2-2V39A16,16,0,0,1,20,23h8A16,16,0,0,1,44,39v6A2,2,0,0,1,42,47ZM8,43H40V39A12,12,0,0,0,28,27H20A12,12,0,0,0,8,39Z"/>
+                                </svg>
+                            </div>
+                        </th>
+                        <th style="width:25px;">
+                            <div id="rdel${i}" onclick=";suppUsr('${mail}','sonapp${i}');" style="display: none;float: right;width:23px">
+                                <svg width="22px" height="22px" viewBox="0 0 48 48" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><title/><path d="M42,3H28a2,2,0,0,0-2-2H22a2,2,0,0,0-2,2H6A2,2,0,0,0,6,7H42a2,2,0,0,0,0-4Z"/><path d="M39,9a2,2,0,0,0-2,2V43H11V11a2,2,0,0,0-4,0V45a2,2,0,0,0,2,2H39a2,2,0,0,0,2-2V11A2,2,0,0,0,39,9Z"/><path d="M21,37V19a2,2,0,0,0-4,0V37a2,2,0,0,0,4,0Z"/><path d="M31,37V19a2,2,0,0,0-4,0V37a2,2,0,0,0,4,0Z"/>
+                                </svg>
+                            </div>
+                        </th>
+                    </tr>
+                </table>
+            </a>
+        </li>
+            `;
+            mainList.innerHTML += template;
+            i++;
+        });
+    }
+}).catch((e)=>{ console.log(e);});
+
+/********************************************************************/
+function resetBlacklisted(){
+    blackListed = "";
+    blackListedApp = "";
+}
+function searchit() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function suppUsr(usrExampleMail,usrExampleApp){
+    blacklisted = usrExampleMail;
+    blackListedApp = document.getElementById(usrExampleApp).innerHTML.toString();
+    console.log(blacklisted);
+    showDeleteModal();
+}
+function showDeleteModal(){
+    document.getElementById('idModalSuppression').style.display='block';
+}
+function confirmDel(){
+    if (blacklisted !="") {
+    fetch('/admin/deleteUser',{method:'POST',body:JSON.stringify({targetMail:blacklisted,targetApp:blackListedApp}),contentType:'application/json'})
+    .then(res=>res.json())
+    .then((data)=>{
+        if (data.msg == 'success') {
+            document.getElementById('idModalSuppression').style.display='none';
+            window.location.reload();
+        }else{
+            alert('erreur: verifiez votre connexion')
+        }
+    }).catch((e)=>{
+        console.log(e);
+    });
+    }else{
+        alert('erreur: svp ressayer ultérieurement');
+    }
+}
+function infoUsr(usrExampleMail){
+    blacklisted = usrExampleMail;
+    showInfoModal();
+}
+function showInfoModal(){
+    document.getElementById('idModalInfo').style.display='block';
+    if (blacklisted !="") {
+        fetch('/admin/infoUser',{method:'POST',body:JSON.stringify({target:blacklisted}),contentType:'application/json'})
+        .then(res=>res.json())
+        .then((data)=>{
+            if (data.msg == 'success') {
+                document.getElementById('usr_app').innerHTML = '<div style="font-weight: bold;">Application Utilisée:</div> '+data.usr_app;
+                document.getElementById('usr_nom').innerHTML = '<div style="font-weight: bold;">Nom:</div> '+data.usr_nom;
+                document.getElementById('usr_prenom').innerHTML = '<div style="font-weight: bold;">Prenom:</div> '+data.usr_prenom;
+                document.getElementById('usr_mail').innerHTML = '<div style="font-weight: bold;">Mail:</div> '+data.usr_mail;
+                document.getElementById('usr_phone').innerHTML = '<div style="font-weight: bold;">Téléphone:</div> '+data.usr_tel;
+                document.getElementById('usr_cin').innerHTML = '<div style="font-weight: bold;">CIN:</div> '+data.usr_cin;
+                document.getElementById('usr_spec').innerHTML = '<div style="font-weight: bold;">Spécialité:</div> '+data.usr_spec;
+                document.getElementById('usr_etab').innerHTML = '<div style="font-weight: bold;">Etablissement:</div> '+data.usr_etab;
+                document.getElementById('usr_insc').innerHTML = `<div style="font-weight: bold;">Date d'inscription:</div> `+data.usr_insc;
+                document.querySelector('#btnShowRelatedPatients').innerHTML = `<button onclick="document.getElementById('idModalInfo').style.display='none';showPatientsModal();"><div style="font-weight: bold;">Voir patients</div></button>`;
+            }
+            if (data.msg == 'failed') {
+                alert('erreur: svp ressayer ultérieurement');
+            }
+        }).catch((e)=>{
+            console.log(e);
+        });
+    }
+    else{
+        alert('erreur: svp ressayer ultérieurement');        
+    }
+}
+
+function showPatientsModal(){
+    document.getElementById("idModalPatients").style.display='block';
+}
+
+async function hideandseek(){
+    document.getElementById('folders').style.visibility='hidden';
+    await sleep(250);
+    document.getElementById('folders').style.visibility='visible';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.querySelector("#closeModalInfo").addEventListener('click',(e)=>{
+    resetBlacklisted();
+    document.getElementById('idModalInfo').style.display = "none";
+});
+document.querySelector("#closeModalPatients").addEventListener('click',(e)=>{
+    resetBlacklisted();
+    document.getElementById('folders').style.visibility='hidden';
+    document.getElementById('idModalPatients').style.display = "none";
+});
+
+
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById('idModalSuppression')) {
+        document.getElementById('idModalSuppression').style.display = "none";
+  }
+    if (event.target == document.getElementById('idModalInfo')) {
+        document.getElementById('idModalInfo').style.display = "none";
+  }
+    if (event.target == document.getElementById('idModalPatients')) {
+        document.getElementById('folders').style.visibility='hidden';
+        document.getElementById('idModalPatients').style.display = "none";
+  }
+}
+
+
+
+
+
+</script>
+
+</div>
+</div>
+{% endblock %}

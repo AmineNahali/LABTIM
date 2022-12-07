@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Se Connecter</title>
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------->
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='loginFiles/depts.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='loginFiles/nicepage.js')}}" defer=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='loginFiles/test.js')}}"></script>
+
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='loginFiles/stylevbc.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='loginFiles/kss.css')}}">
+    
+    <!--------------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <link rel="stylesheet" href="{{url_for('static',filename='loginFiles/nicepage.css')}}" media="screen">
+    <link rel="stylesheet" href="{{url_for('static',filename='loginFiles/COVConnect.css')}}" media="screen">
+    
+    <meta name="generator" content="Nicepage 4.6.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "notfound"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="COVConnect">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode"><header class="u-clearfix u-header u-palette-1-light-1 u-header" id="sec-70ee"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-default u-text-grey-5 u-text-1">Version 1.2b</p>
+        <p class="u-text u-text-grey-5 u-text-2">LABTIM</p>
+      </div></header>
+    <section class="u-clearfix u-grey-10 u-section-1" id="sec-4836">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <div class="u-tabs u-tabs-1">
+          <ul class="u-tab-list u-unstyled" role="tablist">
+            <li class="u-tab-item" role="presentation">
+              <a class="active u-active-palette-1-base u-button-style u-palette-1-light-2 u-tab-link u-tab-link-1" id="link-tab-0da5" href="#tab-0da5" role="tab" aria-controls="tab-0da5" aria-selected="true">Se connecter</a>
+            </li>
+            <li class="u-tab-item" role="presentation">
+              <a class="u-active-palette-1-base u-button-style u-palette-1-light-2 u-tab-link u-tab-link-2" id="link-tab-14b7" href="#tab-14b7" role="tab" aria-controls="tab-14b7" aria-selected="false">Creer un compte</a>
+            </li>
+          </ul>
+          <div class="u-tab-content">
+            <div class="u-container-style u-palette-1-light-2 u-tab-active u-tab-pane u-tab-pane-1" id="tab-0da5" role="tabpanel" aria-labelledby="link-tab-0da5">
+              <div class="u-container-layout u-container-layout-1">
+                <img class="u-image u-image-default u-image-1" src="" id="logoOfApp" alt="" data-image-width="521" data-image-height="417">
+                <div class="u-clearfix u-custom-html u-custom-html-1">
+                  <div>
+                    <br>
+                    <input style="width:inherit;" id="email-8816" type="text" placeholder="Taper votre adresse">
+                    <br>
+                    <br>
+                    <input style="width:inherit;" id="text-8357" type="password" placeholder="Taper votre mot de passe">
+                  </div>
+                </div>
+                <p class="u-text u-text-default u-text-1">Adresse :</p>
+                <p class="u-text u-text-default u-text-2">Mot de passe :</p>
+                <a id="loginbuttonid" onclick="doLogin();" class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-1">Se connecter</a>
+                <p style="visibility: hidden;" class="u-text u-text-default u-text-3">
+                  <span class="u-text-palette-2-base">Mot de passe oublié ?</span>
+                </p>
+              </div>
+            </div>
+            <div class="u-align-left u-container-style u-palette-1-light-2 u-tab-pane u-tab-pane-2" id="tab-14b7" role="tabpanel" aria-labelledby="link-tab-14b7">
+              <div class="u-container-layout u-container-layout-2">
+                <div class="u-clearfix u-custom-html u-custom-html-2">
+                  <div>
+                    <table>
+                      <tbody>
+                        <tr>
+                          <td>Nom:</td>
+                          <td>
+                            <input type="text" id="name-ec05" placeholder="Taper votre nom">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Prénom:</td>
+                          <td>
+                            <input type="text" id="text-692c" placeholder="Taper votre prénom">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>CIN:</td>
+                          <td>
+                            <input type="text" id="text-4ee5" placeholder="Numero de votre CIN">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Téléphone:</td>
+                          <td>
+                            <input type="text" id="inputTel" placeholder="Numero de votre téléphone">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Mail:</td>
+                          <td>
+                            <input type="text" id="email-ec05" placeholder="Taper votre adresse Mail">
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>spécialité:</td>
+                          <td>
+                            <select style="width:195px;height: 32px;" id="select-57cf" name="select-1">
+                              <option value="sp--">(sans spécialité)</option>
+                              <option value="sp00">Médecine de famille</option>
+                              <option value="sp01">Médecine interne</option>
+                              <option value="sp02">Maladies infectieuses</option>
+                              <option value="sp03">Réanimation médicale</option>
+                              <option value="sp04">Carcinologie médicale</option>
+                              <option value="sp05">Nutrition et maladies nutritionnelles</option>
+                              <option value="sp06">Hématologie clinique</option>
+                              <option value="sp07">Endocrinologie</option>
+                              <option value="sp08">Cardiologie</option>
+                              <option value="sp09">Néphrologie</option>
+                              <option value="sp10">Neurologie</option>
+                              <option value="sp11">Pneumologie</option>
+                              <option value="sp12">Rhumatologie</option>
+                              <option value="sp13">Gastro-entérologie</option>
+                              <option value="sp14">Médecine physique, rééducation et réadaptation fonctionnelle</option>
+                              <option value="sp15">Dermatologie</option>
+                              <option value="sp16">Pédiatrie</option>
+                              <option value="sp17">Psychiatrie</option>
+                              <option value="sp18">Pédopsychiatrie</option>
+                              <option value="sp19">Imagerie médicale</option>
+                              <option value="sp20">Radiothérapie carcinologique</option>
+                              <option value="sp21">Médecine légale</option>
+                              <option value="sp22">Médecine du travail</option>
+                              <option value="sp23">Médecine préventive et communautaire</option>
+                              <option value="sp24">Anesthésie - réanimation</option>
+                              <option value="sp25">Anatomie et cytologie pathologique</option>
+                              <option value="sp26">Médecine d'urgence</option>
+                              <option value="sp27">Chirurgie générale</option>
+                              <option value="sp28">Chirurgie carcinologique</option>
+                              <option value="sp29">Chirurgie thoracique</option>
+                              <option value="sp30">Chirurgie vasculaire périphérique</option>
+                              <option value="sp31">Chirurgie neurologique</option>
+                              <option value="sp32">Chirurgie urologique</option>
+                              <option value="sp33">Chirurgie plastique, réparatrice et esthétique</option>
+                              <option value="sp34">Chirurgie orthopédique et traumatologique</option>
+                              <option value="sp35">Chirurgie pédiatrique</option>
+                              <option value="sp36">Chirurgie cardio-vasculaire</option>
+                              <option value="sp37">Ophtalmologie</option>
+                              <option value="sp38">O.R.L</option>
+                              <option value="sp39">Stomatologie et chirurgie maxillo-faciale</option>
+                              <option value="sp40">Gynécologie-obstétrique</option>
+                              <option value="sp41">Biologie médicale</option>
+                              <option value="sp42">Histo-embryologie</option>
+                              <option value="sp43">Physiologie et exploration fonctionnelle</option>
+                              <option value="sp44">Biophysique et médecine nucléaire</option>
+                              <option value="sp45">Pharmacologie</option>
+                              <option value="sp46">Génétique</option>
+                              <option value="sp47">Anatomie</option>
+                              <option value="sp48">Direction et logistique médico-militaire</option>
+                              <option value="sp49">Médecine de la plongée sous-marine</option>
+                              <option value="sp50">Médecine aéronautique et spatiale</option>
+                              <option value="sp51">Hygiène nucléaire</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Etablissement:</td>
+                          <td>
+                            <select style="width:195px;height: 32px;" id="select-a07a" name="specialité" required="required" >
+                              <option disabled selected value></option>
+                              <option value="ajouter">(Ajouter)</option>
+                            </select>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Mot de passe:</td>
+                          <td>
+                            <input type="password" id="text-7aa1" placeholder="minimum 8 car.">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <a id="signupbuttonid" onclick="doSignUp();" class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">S'inscrire</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-eb74">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">LABTIM - 2022</p>
+      </div>
+    </footer>
+  </body>
+
+<!------------------------------------------------MODALS-------------------------------------------------->
+<!------------------------------------------------MODALS-------------------------------------------------->
+<div id="modal_id" class="modal">
+    <div id="modalContent_id" class="modalContent">
+      <div style="font-family: Arial, Helvetica,sans-serif;font-size: 17px;">
+        <span id="closeBtn" class="closeButton">&times;</span>
+        <h2 >Détaillez votre établissement</h2>
+        <hr style="border: 2px solid rgb(57, 149, 254);color:rgb(57, 149, 254);background-color:rgb(57, 149, 254);"><br>
+
+        <label for="categorieEtablissement">Cet établissement est : </label>
+        <select id="categorieEtablissement">          
+          <option value="privé">Privé</option>
+          <option value="publique">Publique</option>
+        </select><br><br>
+
+        <label>Type d'établissement : </label>
+        <div>
+          <select id="types_etablissement_privé" style="display: block;width: auto;">
+            <option value="Clinique privée">Clinique privée</option>
+            <option value="Etablissement ayant un centre de PMA autorisé">Etablissement ayant un centre de PMA autorisé</option>
+            <option value="Centre d'imagerie médicale et de radiologie">Centre d'imagerie médicale et de radiologie</option>
+            <option value="Centre d'hémodialyse autorisé">Centre d'hémodialyse autorisé</option>
+            <option value="Société de transport sanitaire">Société de transport sanitaire</option>
+            <option value="Centre de thalassothérapie">Centre de thalassothérapie</option>
+            <option value="Laboratoire d'analyse de biologie médicale">Laboratoire d'analyse de biologie médicale</option>
+            <option value="Laboratoire d'anatomie et cytologie pathologiques">Laboratoire d'anatomie et cytologie pathologiques</option>
+            <option value="Laboratoire de cytogénétique">Laboratoire de cytogénétique</option>
+          </select>
+
+          <select id="types_etablissement_publique" style="display: none;width: auto;">
+            <option value="Etablissement public de santé">Etablissement public de santé</option>
+            <option value="Etablissement universitaire">Etablissement universitaire</option>
+            <option value="Hôpital régional">Hôpital régional</option>
+            <option value="Hôpital de circonscription">Hôpital de circonscription</option>
+            <option value="Centre de santé de base">Centre de santé de base</option>
+            <option value="Structure relevant de la CNSS">Structure relevant de la CNSS</option>
+            <option value="Structure relevant du ministère de la défense nationale">Structure relevant du ministère de la défense nationale</option>
+            <option value="Structure relevant du ministère de l'intérieur">Structure relevant du ministère de l'intérieur</option>
+            <option value="Centre médical d'entreprise">Centre médical d'entreprise</option>
+          </select>
+        </div><br>
+
+        <table>
+          <tr>
+            <th>
+              <label>Code :</label>
+            </th>
+            <th>
+              <input type="text" id="codeEtablissement">
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <label>Libellé : </label>
+            </th>
+            <th>
+              <input type="text" id="libelleEtablissement">
+            </th>
+          </tr>
+        </table><br><br>
+        <button id="boutonajouter" class="buttajout" style="border:none !important;background-color: rgb(57, 149, 254) !important;">Ajouter</button>
+
+      </div>
+    </div>
+  </div>
+<!------------------------------------------------MODALS-------------------------------------------------->
+<!------------------------------------------------MODALS-------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+/*window.onload = function () {
+  document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+  }, false);
+  document.addEventListener("keydown", function (e) {
+      //document.onkeydown = function(e) {
+      // "I" key
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+          disabledEvent(e);
+      }
+      // "J" key
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+          disabledEvent(e);
+      }
+      // "S" key + macOS
+      if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+          disabledEvent(e);
+      }
+      // "U" key
+      if (e.ctrlKey && e.keyCode == 85) {
+          disabledEvent(e);
+      }
+      // "F12" key
+      if (event.keyCode == 123) {
+          disabledEvent(e);
+      }
+  }, false);
+  function disabledEvent(e) {
+      if (e.stopPropagation) {
+          e.stopPropagation();
+      } else if (window.event) {
+          window.event.cancelBubble = true;
+      }
+      e.preventDefault();
+      return false;
+  }
+}*/
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

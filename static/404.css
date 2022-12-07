@@ -1,0 +1,23 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 530px;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 15px auto 0;
+}
+
+.u-section-1 .u-text-2 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 0 auto;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: none none solid;
+  font-size: 1.25rem;
+  margin: 83px auto 60px;
+  padding: 0;
+}

@@ -1,0 +1,140 @@
+ .u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 764px;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: none none solid;
+  margin: 0 0 0 auto;
+  padding: 0;
+}
+
+.u-section-1 .u-group-1 {
+  width: 570px;
+  min-height: 66px;
+  height: auto;
+  margin: -19px auto 0 0;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 0 auto 0 0;
+}
+
+.u-section-1 .u-text-2 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: -29px auto 0 114px;
+}
+
+.u-section-1 .u-text-3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: 8px auto 0 0;
+}
+
+.u-section-1 .u-text-4 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: -28px auto 0 114px;
+}
+
+.u-section-1 .u-btn-2 {
+  border-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: -1px 0 0 auto;
+}
+
+.u-section-1 .u-text-5 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin: -19px auto 0;
+}
+
+.u-section-1 .u-group-2 {
+  min-height: 511px;
+  margin-top: -1px;
+  margin-bottom: 60px;
+  height: auto;
+}
+
+.u-section-1 .u-container-layout-2 {
+  padding: 0;
+}
+
+.u-section-1 .u-text-6 {
+  font-weight: 700;
+  margin: 1px auto 0 530px;
+}
+
+.u-section-1 .u-text-7 {
+  font-weight: 700;
+  margin: -26px 38px 0 auto;
+}
+
+.u-section-1 .u-text-8 {
+  font-weight: 700;
+  margin: -25px auto 0 18px;
+}
+
+.u-section-1 .u-custom-html-1 {
+  height: auto;
+  min-height: 466px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-group-1 {
+    height: auto;
+  }
+
+  .u-section-1 .u-group-2 {
+    height: auto;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-left: 437px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-6 {
+    margin-left: 335px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-group-1 {
+    width: 540px;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-left: 251px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-group-1 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-left: 72px;
+  }
+
+  .u-section-1 .u-text-4 {
+    margin-left: 72px;
+  }
+
+  .u-section-1 .u-text-6 {
+    margin-left: 158px;
+  }
+}

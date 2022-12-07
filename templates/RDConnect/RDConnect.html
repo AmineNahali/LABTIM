@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>RDConnect</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='RDconnect/nicepage.css')}}" media="screen">
+    <link rel="stylesheet" href="{{url_for('static',filename='RDconnect/superModal.css')}}" media="screen">
+    <link rel="stylesheet" href="{{url_for('static',filename='RDconnect/app.css')}}" media="screen">
+    <link rel="stylesheet" href="{{url_for('static',filename='RDconnect/RDConnect.css')}}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='RDconnect/jquery.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='RDconnect/nicepage.js')}}" defer=""></script>
+    <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/three.min.js"></script>
+    <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/controls/OrbitControls.js"></script>
+    <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/LoaderSupport.js"></script>
+    <script src="https://r105.threejsfundamentals.org/threejs/resources/threejs/r105/js/loaders/OBJLoader2.js"></script>
+    <script src="{{url_for('static',filename='RDconnect/MTLLoader.js')}}"></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='RDconnect/render.js')}}" defer=""></script>
+    
+    <script class="u-script" type="text/javascript" src="{{url_for('static',filename='RDconnect/auto.js')}}" defer=""></script>
+    <!--<script class="u-script" type="text/javascript" src="{{url_for('static',filename='RDconnect/auto2.js')}}" defer=""></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="generator" content="Nicepage 4.6.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <style>
+      .mennumbers{
+        width: 60px;
+      }
+      .elem:hover{
+        background-color: #ccc !important;
+      }
+      .choices1:hover{
+        background-color: green !important;
+        cursor: pointer;
+      }
+      .choices2:hover{
+        background-color: red !important;
+        cursor: pointer;
+      }
+    </style>
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "notfound"
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="RDConnect">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body u-xl-mode"><header class="u-clearfix u-header u-palette-1-light-1 u-header" id="sec-70ee">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <p class="u-text u-text-default u-text-grey-5 u-text-1">Version 1.2b</p>
+      <p class="u-text u-text-grey-5 u-text-2"> RDConnect</p>
+    </div></header>
+    <section class="u-clearfix u-grey-10 u-section-1" id="sec-4836">
+      <div class="u-align-left u-clearfix u-sheet u-sheet-1">
+        <a onclick="logout();" class="u-active-none u-border-2 u-border-palette-1-base u-bottom-left-radius-0 u-bottom-right-radius-0 u-btn u-btn-rectangle u-button-style u-hover-none u-none u-radius-0 u-top-left-radius-0 u-top-right-radius-0 u-btn-1">Deconnexion</a>
+        <div class="u-align-left u-container-style u-group u-group-1">
+          <div class="u-container-layout">
+            <p class="u-text u-text-default u-text-1">Utilisateur :</p>
+            <p class="u-text u-text-default u-text-palette-1-dark-1 u-text-2" id="userNamePlace">n/a</p>
+            <p class="u-text u-text-default u-text-3">Spécialité&nbsp; &nbsp;:</p>
+            <p class="u-text u-text-default u-text-palette-1-dark-1 u-text-4" id="userSpecPlace">n/a</p>
+          </div>
+        </div>
+        <a onclick="document.getElementById('addNewPatientModal').style.display = 'block';" style="margin-bottom: 10px !important;" class="u-btn u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">ajouter</a>
+        <p class="u-text u-text-default u-text-5">Mes patients</p>
+        <div class="u-align-center u-border-1 u-border-grey-75 u-container-style u-expanded-width u-group u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <p class="u-text u-text-default u-text-palette-2-base u-text-6" style="position: relative;left: -10px;">ID patient</p>
+            <p class="u-text u-text-default u-text-palette-2-base u-text-7">Options</p>
+            <p class="u-text u-text-default u-text-palette-2-base u-text-8">Date d'ajout</p>
+            <div class="u-clearfix u-custom-html u-expanded-width u-palette-5-light-1 u-custom-html-1">
+              <div style="width:100%; overflow-y:scroll;height:466px;">
+                <div id="listOfPatientsPlace">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+</body>
+<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-eb74">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <p class="u-small-text u-text u-text-variant u-text-1">LABTIM - 2022</p>
+  </div>
+</footer>
+
+  <div id="addNewPatientModal">
+    <div id="addNewPatientModalContent" style="width:400px !important;">
+        <span id="addNewPatientModalClose" onclick="document.getElementById('addNewPatientModal').style.display = 'none';">&times;</span>
+        <h3 style="position:relative;left:20%;top: 15%;">Nouveau patient</h3>
+        <div style="position:relative;top: 15%;left: 10px;width: 95%;background-color: #3AB0FF;height: 4px;"></div>
+        <br><br>
+        <div style="position:relative;left: 30px;top: 20%;">
+          <table>
+            <tr height="50px" style="width: fit-content !important;">
+              <td style="width: fit-content !important;"><div style="width: fit-content !important;">ID patient : </div></td>
+              <td><input type="text" id="inputPatientID"></td>
+            </tr>
+            
+           </table style="height: 200px;">
+           <table> 
+            <tr height="50px">
+              <td>
+                <form>
+                  <input id="filesToUpload" type="file" accept="image/png, image/jpeg, image/tiff, image/dicomm, image/gif" multiple>
+                </form>
+              </td>
+            </tr>
+            <tr height="50px">
+              <td><button id="testUpload">Charger les images</button></td>
+            </tr>
+            <tr height="50px">
+              <td><div id="status" style="color:red;"></div></td>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+
+
+
+  <div id="modalDelPat">
+  <div id="modalDelPatContent">
+    <span onclick="targetPat='';document.getElementById('modalDelPat').style.display='none';" id="modalDelPatClose">&times;</span><br>
+    <h3 style="text-align: center;color: #406882;">Supprimer ce patient</h3><br>
+    <table style="width:100%;height: 50px;">
+      <tr>
+        <td onclick="targetPat='';document.getElementById('modalDelPat').style.display='none';" class="noDel"><p style="text-align:center;color: white;">NON</p></td>
+        <td onclick="confirmDeletingPat();" class="yesDel" style="text-align:center;"><p style="text-align:center;color: white;">OUI</p></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div id="superModalx" class="superModal" >
+    <div scroll="no" class="superModalContent">
+      <div id="resTauxInfx">-</div><span id="closeSuperModal" class="closeSuperModal">&times;</span>
+      <canvas id=c></canvas>
+    </div>  
+</div>
+
+
+<div id="interfaceModal">
+  <span id="interfaceModalClose" onclick="window.location.reload();" style="z-index: 41;">&times;</span>
+  <div style="position:relative;top: -7%;">
+  <h5 id="wherepat" style="text-align: center;color:cadetblue;">ID PATIENT: n/a</h5>
+  <div>
+    <table style="width: 90%;margin-left: 5%;">
+      <tr>
+        <td style="width:33%;text-align: left;">Image originale</td>
+      </tr>
+    </table>
+    <table id="viewimagesTable" style="margin-left: 5%;">
+      <tr style="height:100%">
+        <td style="width:33%;"><div style="width:100%;height:100%;border: 1px solid black;background-color: #ccc;"><img id="outputImagePreviewOriginal" style="width:100%;height:100%;"></div></td>
+        <td style="width:33%;"><div style="width:100%;height:100%;border: 1px solid black;background-color: #ccc;overflow-y: scroll;" id="listOfResults">
+          
+            
+
+
+
+
+
+
+
+
+
+
+        </div></td>
+        <td style="width:33%;"><div style="width:100%;height:100%;">
+        <p>0 = Wet Age-related Macular Degeneration Image</p>
+        <p>1 = HEALTHY Image</p>
+        <p>2 = Proliferative Diabetic Retinopathy Image</p>
+      </div></td>
+      </tr>
+    </table>
+    <table id="viewimagesTable" style="margin-right: 5%;">
+      <tr style="height:30%">
+        <td style="width:70%;"><div style="width:100%;height: 100%;border: 1px solid black"></div></td>
+      </tr>
+    </table>
+    <table id="viewimagesTable2" style="margin-left: 5%;height: 100px;">
+      <tr style="width:100%;">
+        <td style="width: 33%;">
+          <div style="width:100%;height: 120px;overflow-y: scroll;">
+            <div style="margin-left:5px;">
+              <div>
+                  <p class="menu_of_operations">Remplacer:</p>
+                  <div class="menu_of_operations">
+                    <input class="mennumbers" type="number" id="aRemplacer">par<input class="mennumbers" type="number" id="Remplacant"><button id="validerRemplacement" disabled>Valider</button><br><br>
+                  </div>
+              </div>
+
+              <div >
+                  <p class="menu_of_operations">Supprimer:</p>
+                  <input class="mennumbers" type="number" id="aSupprimer"><button id="validerSuppression" disabled>Valider</button><br><br>
+              </div>
+
+              <div >
+                  <p class="menu_of_operations">Supprimer plusieurs:</p>
+                  de<input class="mennumbers" type="number" id="indiceGauche">vers<input class="mennumbers" type="number" id="indiceDroite"><button id="validerSuppressionPlusieurs" disabled>Valider</button><br><br>
+              </div>
+            </div>
+
+          </div>
+        </td>
+        <!------------------------------------------------------------------------------>
+        <td style="width: 33%;">
+          <table style="margin-left:33%;"><tr><th><button id="allergauche" style="width:60px" disabled="">&lt;&lt;</button></th>
+              <th><div id="indicedimage">-</div></th>
+              <th>/</th>
+              <th><div id="finindicedimage">-</div></th>
+              <th><button id="allerdroite" style="width:60px" disabled="">&gt;&gt;</button></th>
+            </tr></table>
+        </td>
+        <td style="width: 33%;">
+        <button style="width:100%;" id="speedbtn" onclick="requestClassification();">Classification</button>
+
+        
+
+
+
+        
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  resize();
+function resize(){
+  w=screen.width*0.9;
+  h=w/3;
+  document.getElementById('viewimagesTable').style.width = `${w}px`;
+  document.getElementById('viewimagesTable').style.height= `${h}px`;
+  document.getElementById('viewimagesTable2').style.width = `${w}px`;
+}
+window.onresize =resize();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="loadz">
+  <table style="display:flex;justify-content: center;position: relative;top: 40%;">
+    <tr><td><img src="{{url_for('static',filename='l.gif')}}"></td></tr>
+  </table>
+  <p style="text-align:center;color:white; position:relative;top:40%;" id="msgloadz">veuillez patienter, traitement en cours</p>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  /*window.onload = function () {
+           document.addEventListener("contextmenu", function (e) {
+               e.preventDefault();
+           }, false);
+           document.addEventListener("keydown", function (e) {
+               //document.onkeydown = function(e) {
+               // "I" key
+               if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {
+                   disabledEvent(e);
+               }
+               // "J" key
+               if (e.ctrlKey && e.shiftKey && e.keyCode == 74) {
+                   disabledEvent(e);
+               }
+               // "S" key + macOS
+               if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+                   disabledEvent(e);
+               }
+               // "U" key
+               if (e.ctrlKey && e.keyCode == 85) {
+                   disabledEvent(e);
+               }
+               // "F12" key
+               if (event.keyCode == 123) {
+                   disabledEvent(e);
+               }
+           }, false);
+           function disabledEvent(e) {
+               if (e.stopPropagation) {
+                   e.stopPropagation();
+               } else if (window.event) {
+                   window.event.cancelBubble = true;
+               }
+               e.preventDefault();
+               return false;
+           }
+       }*/
+</script>
+
+</html>

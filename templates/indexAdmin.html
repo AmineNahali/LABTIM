@@ -1,0 +1,68 @@
+{% extends 'admin.html' %}
+
+{% block header %}
+<title>Dashboard</title>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<style type="text/css">
+	.piech{
+
+		float: left;width: 100%; height:350px;
+		box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center;color: #406882;">Dashboard</h1>
+<div style="margin-left: 5%;width: 90%;z-index: -1;"><!-- height: 100px;background-color: #eee; -->
+	<table style="width: 100%;height: 100%;">
+		
+		<tr>
+			<td style="height: 100%;width: 50%;"><div id="piechartUsers" class="piech"></div></td>
+			<td style="height: 100%;width: 50%;"><div id="piechartPatients" class="piech"></div></td>
+		</tr>
+	</table>
+	<br><br>
+		
+	<div style="height: 50px;width: 50%;">
+		<div style="position: relative;top: 0;left: auto;font-weight: bold;" id="loggedinnumber">Utilisateurs connectés : na/na</div>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+	var x = [];
+	var y = [];
+	x.push(['App', 'Nombre des utilisateurs']);
+	y.push(['App', 'Nombre des patients']);
+	fetch("/admin/adminGetUsersStats",{method:'POST'})
+	.then(res=>res.json())
+	.then((data)=>{
+		if (data.msg =="success"){
+			document.getElementById("loggedinnumber").innerHTML = `Utilisateurs connectés : ${data.loggedin}/${data.allusers}`;
+			arrapp = data.stats.split("///");
+			arrapp.pop();
+			arrapp.forEach((element)=>{
+				x.push([element.split("&&&")[0].toString(),parseInt(element.split("&&&")[1].toString())]);
+				y.push([element.split("&&&")[0].toString(),parseInt(element.split("&&&")[2].toString())]);
+			});
+			var dataUSR = google.visualization.arrayToDataTable(x);
+			var dataPAT = google.visualization.arrayToDataTable(y);
+			var chart = new google.visualization.PieChart(document.getElementById('piechartUsers'));
+			chart.draw(dataUSR, {title:'Utilisateurs',pieHole: 0.4,});
+			var chart2 = new google.visualization.PieChart(document.getElementById('piechartPatients'));
+			chart2.draw(dataPAT, {title:'Patients',pieHole: 0.4});
+		}
+	})
+	.catch(e=>console.log(e));
+}
+
+</script>
+{% endblock %}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>vérification</title>
+	<style type="text/css">
+		body{
+			font-family: Arial, Helvetica, sans-serif;
+		}
+		.viewport1{
+			width: 30%;
+			height: 200px;
+			margin: 10% auto;
+			padding: 20px;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		}
+		h1{
+			text-align: center;
+		}
+		button{
+			background-color: #3BACB6;
+			width: 100px;
+			height: 45px;
+			border: none;
+			font-size: 24px;
+			border-radius: 5px;
+			position: relative;
+			left: 39%;
+		}
+		button:hover{
+			background-color: lightgray;
+		}
+		table{
+			padding-left: 20%;
+		}
+		label{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="viewport1">
+		<h1>Login:</h1>
+		<table>
+			<tr>
+				<th><label for="user_id">Username</label></th><th><input type="text" id="user_id"><br></th>
+			</tr>
+			<tr>
+				<th><label for="pwd_id">Password</label></th><th><input type="password" id="pwd_id"></th>
+			</tr>
+		</table><br>
+		<button id="login">Login</button>
+	</div>
+<script type="text/javascript">
+	usr = document.querySelector('#user_id');
+	pwd = document.querySelector('#pwd_id');
+	btn = document.querySelector('#login');
+	btn.addEventListener('click',(e)=>{
+		e.preventDefault();
+		if (usr.value.toString() != "" && pwd.value.toString() != "") {
+			fetch('/admin/login/verify',{method:'POST',redirect: 'follow',body:JSON.stringify({user:usr.value.toString(),pass:pwd.value.toString()}),contentType : "application/json"})
+			.then((response)=>{         
+				if(response.redirected){
+				window.location.href = response.url;
+				}
+				else{
+					alert("accès réfusé");
+				}
+			})           
+			.catch((e)=>{
+				console.log(e);
+			});
+		}
+		else{
+			alert('svp verifier vos données');
+		}
+	});
+</script>
+</body>
+</html>

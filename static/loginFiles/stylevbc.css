@@ -1,0 +1,44 @@
+.buttajout{
+	background-color:#A2D5AB;border-color: #39AEA9;width: 20%;height: 30px;
+	margin-left: 40%;
+}
+	.buttajout:hover{
+	background-color: #E5EFC1;
+}
+.modal{
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+.modalContent{
+	background-color: #F7F7F7;
+	margin: 10% auto;
+	padding: 20px ;
+	width: 40%;
+	height: auto;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+	animation-name : modalopen;
+	animation-duration: 0.5s;
+}
+.closeButton{
+	color: #ccc;
+	float: right;
+	font-size: 30px;
+}
+.closeButton:hover,.closeButton:focus{
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+@keyframes modalopen{
+	from{opacity: 0}
+	to {opacity: 1}
+}

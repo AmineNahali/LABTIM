@@ -1,0 +1,99 @@
+#modalAddApp{
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow-y: hidden; 
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top: 50px;
+}
+#modalAddAppContent{
+	background-color: #fefefe;
+	margin: auto auto auto auto;
+	border: 1px solid #888;
+	width: 60%;
+	height: 510px;
+	overflow-y: hidden;
+}
+#modalAddAppClose{
+	font-size: 40px;
+	float: right;
+}
+#modalAddAppClose:hover{
+	cursor: pointer;
+	color: grey;
+}
+#modalConfApp{
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow-y: hidden; 
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top: 50px;
+}
+#modalConfAppContent{
+	background-color: #fefefe;
+	margin: auto auto auto auto;
+	border: 1px solid #888;
+	width: 60%;
+	height: 510px;
+	overflow-y: hidden;
+}
+#modalConfAppClose{
+	font-size: 40px;
+	float: right;
+}
+#modalConfAppClose:hover{
+	cursor: pointer;
+	color: grey;
+}
+
+#modalDelApp{
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%; 
+	overflow-y: hidden; 
+	background-color: rgba(0, 0, 0, 0.5);
+	padding-top: 50px;
+}
+#modalDelAppContent{
+	background-color: #fefefe;
+	margin: 10% auto auto auto;
+	border: 1px solid #888;
+	width: 50%;
+	height: fit-content;
+	overflow-y: hidden;
+}
+#modalDelAppClose{
+	font-size: 40px;
+	float: right;
+}
+#modalDelAppClose:hover{
+	cursor: pointer;
+	color: grey;
+}
+.noDel{
+	background-color: #B1D0E0;
+	width: 50%;
+}
+.noDel:hover{
+	background-color: #eee;
+}
+.yesDel{
+	background-color: coral;
+	width: 50%;
+}
+.yesDel:hover{
+	background-color: indianred;
+}

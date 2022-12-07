@@ -1,0 +1,23 @@
+#maintenaceModal{
+	display: none;
+	position: fixed;
+	z-index: 2;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0.9);
+}
+#maintenaceModalContent{
+	background-color:lightgrey;
+	box-shadow: whitesmoke;
+	border-radius: 10px;
+	position: relative;
+	top: 25%;
+	left: 0;
+	width: 60%;
+	overflow: hidden;
+	margin: auto auto;
+	vertical-align: center;
+}
